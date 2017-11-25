@@ -1,18 +1,59 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+        <header className="level is-mobile">
+          <h1 className="level-item">Welcome to React</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <nav className="tabs is-left">
+          <p>Topic</p>
+          <p>Topic</p>
+          <p>Topic</p>
+          <p>Topic</p>
+          <p>Topic</p>
+        </nav>
+        <section className="ArticleList">
+          <div className="columns is-multiline is-centered">
+            <div className="column is-three-fifths-mobile is-half-tablet is-one-third-desktop">
+              <p className="card">CARD</p>
+            </div>
+            <div className="column is-three-fifths-mobile is-half-tablet is-one-third-desktop">
+              <p className="card">CARD</p>
+            </div>
+            <div className="column is-three-fifths-mobile is-half-tablet is-one-third-desktop">
+              <p className="card">CARD</p>
+            </div>
+            <div className="column is-three-fifths-mobile is-half-tablet is-one-third-desktop">
+              <p className="card">CARD</p>
+            </div>
+            <div className="column is-three-fifths-mobile is-half-tablet is-one-third-desktop">
+              <p className="card">CARD</p>
+            </div>
+            <div className="column is-three-fifths-mobile is-half-tablet is-one-third-desktop">
+              <p className="card">CARD</p>
+            </div>
+            <div className="column is-three-fifths-mobile is-half-tablet is-one-third-desktop">
+              <p className="card">CARD</p>
+            </div>
+            <div className="column is-three-fifths-mobile is-half-tablet is-one-third-desktop">
+              <p className="card">CARD</p>
+            </div>
+            <div className="column is-three-fifths-mobile is-half-tablet is-one-third-desktop">
+              <p className="card">CARD</p>
+            </div>
+            <div className="column is-three-fifths-mobile is-half-tablet is-one-third-desktop">
+              <p className="card">CARD</p>
+            </div>
+            <div className="column is-three-fifths-mobile is-half-tablet is-one-third-desktop">
+              <p className="card">CARD</p>
+            </div>
+            <div className="column is-three-fifths-mobile is-half-tablet is-one-third-desktop">
+              <p className="card">CARD</p>
+            </div>
+          </div>
+        </section>
       </div>
     );
   }
