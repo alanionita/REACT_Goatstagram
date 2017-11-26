@@ -1,76 +1,44 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-class App extends Component {
-  render () {
-    return (
-      <div className="App">
-        <header className="level is-mobile">
-          <h1 className="level-item is-size-3">Goatstagram 🐐</h1>
-        </header>
-        <nav className="tabs is-centered">
-          <ul>
-            <li>
-              <a>All images</a>
-            </li>
-            <li>
-              <a>Favourites</a>
-            </li>
-          </ul>
-        </nav>
-        <section className="ArticleList">
-          <div className="container">
-            <div className="columns is-multiline is-centered">
-              <div className="column is-three-fifths-mobile is-half-tablet is-one-third-desktop">
-                <div className="card">
-                  <header className="card-header">
-                    <p className="card-header-title">Component</p>
-                  </header>
-                  <div className="card-image">
-                    <figure className="image is-4by4">
-                      <img
-                        src="https://bulma.io/images/placeholders/1280x960.png"
-                        alt="Placeholder image"
-                      />
-                    </figure>
-                  </div>
-                </div>
-              </div>
-              <div className="column is-three-fifths-mobile is-half-tablet is-one-third-desktop">
-                <div className="card">
-                  <header className="card-header">
-                    <p className="card-header-title">Component</p>
-                  </header>
-                  <div className="card-image">
-                    <figure className="image is-4by4">
-                      <img
-                        src="https://bulma.io/images/placeholders/1280x960.png"
-                        alt="Placeholder image"
-                      />
-                    </figure>
-                  </div>
-                </div>
-              </div>
-              <div className="column is-three-fifths-mobile is-half-tablet is-one-third-desktop">
-                <div className="card">
-                  <header className="card-header">
-                    <p className="card-header-title">Component</p>
-                  </header>
-                  <div className="card-image">
-                    <figure className="image is-4by4">
-                      <img
-                        src="https://bulma.io/images/placeholders/1280x960.png"
-                        alt="Placeholder image"
-                      />
-                    </figure>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-    );
-  }
-}
+// COMPONENTS
+import PhotoList from './PhotoList';
+
+const App = props => {
+  const { photos } = props;
+  return (
+    <div className="App">
+      <header className="level is-mobile">
+        <h1 className="level-item is-size-3">
+          Goatstagram{' '}
+          <span role="img" aria-label="goat emoji">
+            🐐
+          </span>
+        </h1>
+      </header>
+      <nav className="tabs is-centered">
+        <ul>
+          <li>
+            <Link to="/all">All images</Link>
+          </li>
+          <li>
+            <Link to="/favourites">
+              Favourites{' '}
+              <span role="img" aria-label="heart emoji">
+                ❤️
+              </span>
+            </Link>
+          </li>
+        </ul>
+      </nav>
+      <PhotoList photos={photos} />
+    </div>
+  );
+};
+
+PhotoList.propTypes = {
+  photos: PropTypes.array.isRequired
+};
 
 export default App;
