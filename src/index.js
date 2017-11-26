@@ -1,9 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 
+// REDUX
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import logger from 'redux-logger';
+import combinedReducer from './reducers/index';
+
+// CSS
 import './css/bulma.css';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// COMPONENTS
+import Root from './Root';
+
+const store = createStore(combinedReducer, applyMiddleware(thunk, logger));
+
+ReactDOM.render(<Root store={store}/>, document.getElementById('root'));
 registerServiceWorker();
+
+
