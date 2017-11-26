@@ -9,15 +9,13 @@ describe('PHOTOS REDUCER', () => {
   describe('fetchPhotos', () => {
     test('adds a collection of photos to the new state', () => {
       const action = actions.fetchPhotosSuccess({
-        items: [{ '2': 2 }, { '1': 1 }]
+        photos: { 
+          photo: [{ '2': 2 }, { '1': 1 }]
+        }
       });
       const newState = reducer(initialState, action);
       expect(Array.isArray(newState.data)).toBe(true);
-      expect(newState.data).toEqual([
-        {
-          items: [{ '2': 2 }, { '1': 1 }]
-        }
-      ]);
+      expect(newState.data).toEqual([{ '2': 2 }, { '1': 1 }]);
     });
     test('changes the loading property in the new state', () => {
       const action = actions.fetchPhotosRequest();

@@ -17,7 +17,7 @@ function reducer (prevState = initialState, action = {}) {
 
   if (action.type === types.FETCH_PHOTOS_SUCCESS) {
     const newState = Object.assign({}, prevState);
-    newState.data = newState.data.concat(action.payload);
+    newState.data = newState.data.concat(action.payload.photos.photo);
     newState.loading = false;
     return newState;
   }
