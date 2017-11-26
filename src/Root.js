@@ -1,5 +1,5 @@
 import AppContainer from './components/AppContainer';
-import Favourites from './components/Favourites';
+// import Favourites from './components/Favourites';
 
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -13,7 +13,7 @@ const Root = ({ store }) => (
     <Router history={history}>
       <Switch>
         <Route path="/" component={AppContainer} />
-        <Route path="/favourites" component={Favourites} />
+        {/* <Route path="/favourites" component={Favourites} /> */}
       </Switch>
     </Router>
   </Provider>

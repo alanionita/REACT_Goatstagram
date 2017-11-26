@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import PhotoList from './PhotoList';
 
 const App = props => {
-  const { photos } = props;
+  const { photosData } = props;
   return (
     <div className="App">
       <header className="level is-mobile">
@@ -32,7 +32,7 @@ const App = props => {
           </li>
         </ul>
       </nav>
-      <PhotoList photos={photos} />
+      <PhotoList photos={photosData} />
     </div>
   );
 };

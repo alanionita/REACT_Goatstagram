@@ -26,14 +26,14 @@ function mapDispatchToProps (dispatch) {
 
 function mapStateToProps (state) {
   return {
-    photos: state.photos.data,
+    photosData: state.photos.data,
     loading: state.loading
   };
 }
 
 AppContainer.propTypes = {
   fetchPhotos: PropTypes.func.isRequired,
-  photos: PropTypes.array.isRequired
+  photosData: PropTypes.array.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);
