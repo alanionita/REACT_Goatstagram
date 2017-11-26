@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
 class App extends Component {
-  render() {
+  render () {
     return (
       <div className="App">
         <header className="level is-mobile">
-          <h1 className="level-item">Welcome to React</h1>
+          <h1 className="level-item is-size-3">Welcome to React</h1>
         </header>
         <nav className="tabs is-left">
           <p>Topic</p>
