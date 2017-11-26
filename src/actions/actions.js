@@ -2,7 +2,7 @@ import * as types from './types';
 import axios from 'axios';
 
 const API_URL =
-  'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=7ca19a0ef7ff00d5aa27bc7916e83540&tags=goats,animals&tag_mode=all&sort=relevance%2C+views&safe_search=&content_type=1&media=&extras=url_m%2C+views&format=json&nojsoncallback=1';
+  'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=7ca19a0ef7ff00d5aa27bc7916e83540&user_id=&tags=animals&text=goats&sort=relevance&safe_search=&content_type=1&place_id=&media=&extras=url_m%2C+views&format=json&nojsoncallback=1';
 
 export function fetchPhotosRequest () {
   return {

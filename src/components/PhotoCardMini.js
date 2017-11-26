@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+
 const PhotoCardMini = props => {
   const { title, link } = props;
   return (
@@ -9,12 +10,11 @@ const PhotoCardMini = props => {
         <header className="card-header">
           <p className="card-header-title">{title}</p>
         </header>
-        <div className="card-image">
-          <figure className="image">
-            <img
-              src={link}
-              alt={title}
-            />
+        <div
+          className="card-image"
+        >
+          <figure className="image is-1by1">
+            <img src={link} alt={title} style={{objectFit:'cover'}}/>
           </figure>
         </div>
       </div>
@@ -24,7 +24,7 @@ const PhotoCardMini = props => {
 
 PhotoCardMini.propTypes = {
   title: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired
 };
 
 export default PhotoCardMini;
