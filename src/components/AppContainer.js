@@ -12,7 +12,7 @@ class AppContainer extends React.Component {
   }
 
   render () {
-    return <App photos={this.props.photos} />;
+    return <App photosData={this.props.photosData} />;
   }
 }
 

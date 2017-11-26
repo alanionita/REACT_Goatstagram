@@ -5,40 +5,37 @@ import { Link } from 'react-router-dom';
 // COMPONENTS
 import PhotoList from './PhotoList';
 
-const App = props => {
-  const { photosData } = props;
-  return (
-    <div className="App">
-      <header className="level is-mobile">
-        <h1 className="level-item is-size-3">
-          Goatstagram{' '}
-          <span role="img" aria-label="goat emoji">
-            🐐
-          </span>
-        </h1>
-      </header>
-      <nav className="tabs is-centered">
-        <ul>
-          <li>
-            <Link to="/all">All images</Link>
-          </li>
-          <li>
-            <Link to="/favourites">
-              Favourites{' '}
-              <span role="img" aria-label="heart emoji">
-                ❤️
-              </span>
-            </Link>
-          </li>
-        </ul>
-      </nav>
-      <PhotoList photos={photosData} />
-    </div>
-  );
-};
+const App = ({ photosData }) => (
+  <div className="App">
+    <header className="level is-mobile">
+      <h1 className="level-item is-size-3">
+        Goatstagram{' '}
+        <span role="img" aria-label="goat emoji">
+          🐐
+        </span>
+      </h1>
+    </header>
+    <nav className="tabs is-centered">
+      <ul>
+        <li>
+          <Link to="/all">All images</Link>
+        </li>
+        <li>
+          <Link to="/favourites">
+            Favourites{' '}
+            <span role="img" aria-label="heart emoji">
+              ❤️
+            </span>
+          </Link>
+        </li>
+      </ul>
+    </nav>
+    <PhotoList photos={photosData} />
+  </div>
+);
 
-PhotoList.propTypes = {
-  photos: PropTypes.array.isRequired
+App.propTypes = {
+  photosData: PropTypes.array.isRequired
 };
 
 export default App;

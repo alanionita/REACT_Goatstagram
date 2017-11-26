@@ -9,7 +9,11 @@ const PhotoList = ({ photos }) => (
     <div className="container">
       <div className="columns is-multiline is-centered">
         {photos.map(photo => (
-          <PhotoCardMini title={photo.title} link={photo.url_m} key={photo.id} />
+          <PhotoCardMini
+            title={photo.title}
+            link={photo.url_m}
+            key={photo.id}
+          />
         ))}
       </div>
     </div>
