@@ -2,6 +2,7 @@ import * as types from '../actions/types';
 
 export const initialState = {
   data: [],
+  favourites: [],
   error: null,
   loading: false
 };
@@ -32,6 +33,7 @@ function reducer (prevState = initialState, action = {}) {
 
   if (action.type === types.ADD_TO_FAVOURITES) {
     const newState = Object.assign({}, prevState);
+    newState.favourites = prevState.favourites.concat(action.payload);
     newState.data = prevState.data.filter(item => {
       if (action.payload.id !== item.id) return item;
     });
