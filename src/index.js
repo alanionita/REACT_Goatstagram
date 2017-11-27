@@ -12,11 +12,11 @@ import combinedReducer from './reducers/index';
 import './css/bulma.css';
 
 // COMPONENTS
-import Root from './Root';
+import Routes from './Routes';
 
 const store = createStore(combinedReducer, applyMiddleware(thunk, logger));
 
-ReactDOM.render(<Root store={store}/>, document.getElementById('root'));
+ReactDOM.render(<Routes store={store}/>, document.getElementById('root'));
 registerServiceWorker();
 
 

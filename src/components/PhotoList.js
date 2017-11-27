@@ -13,7 +13,7 @@ const PhotoList = ({ photos, addToFave }) => (
             <PhotoCardMini
               title={photo.title}
               link={photo.url_m}
-              key={photo.id}
+              key={`allphotos-${photo.id}`}
               onClick={() => addToFave(photo)}
             />
           );

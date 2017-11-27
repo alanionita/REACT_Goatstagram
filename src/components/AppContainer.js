@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import App from './App';
+import PhotoList from './PhotoList';
+import FaveList from './FaveList';
 
 // Redux
 import { connect } from 'react-redux';
@@ -13,10 +15,17 @@ class AppContainer extends React.Component {
 
   render () {
     return (
-      <App
-        photosData={this.props.photosData}
-        addToFave={this.props.addToFave}
-      />
+      <section>
+        <App />
+        <PhotoList
+          photos={this.props.photosData}
+          addToFave={this.props.addToFave}
+        />;
+        <FaveList
+          photos={this.props.favouritesData}
+          addToFave={this.props.addToFave}
+        />;
+      </section>
     );
   }
 }
@@ -43,6 +52,7 @@ function mapStateToProps (state) {
 AppContainer.propTypes = {
   fetchPhotos: PropTypes.func.isRequired,
   photosData: PropTypes.array.isRequired,
+  favouritesData: PropTypes.array.isRequired,
   addToFave: PropTypes.func.isRequired
 };
 
