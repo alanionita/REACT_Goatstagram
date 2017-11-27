@@ -20,10 +20,10 @@ describe('PHOTOS ACTIONS', () => {
     test('returns \'FETCH PHOTOS SUCCESS\' and payload', () => {
       const input = {
         items: [
-            { 
-                title:'Stretching for food',
-                link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
-            }
+          {
+            title: 'Stretching for food',
+            link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+          }
         ]
       };
       expect(actions.fetchPhotosSuccess(input)).toEqual({
@@ -58,10 +58,11 @@ describe('PHOTOS ACTIONS', () => {
           status: 200,
           response: {
             items: [
-                { 
-                    title:'Stretching for food',
-                    link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
-                }
+              {
+                title: 'Stretching for food',
+                link:
+                  'https://www.flickr.com/photos/vassilisonline/38593667296/'
+              }
             ]
           }
         });
@@ -69,10 +70,10 @@ describe('PHOTOS ACTIONS', () => {
 
       const store = mockStore({
         items: [
-            { 
-                title:'Stretching for food',
-                link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
-            }
+          {
+            title: 'Stretching for food',
+            link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+          }
         ]
       });
 
@@ -82,10 +83,11 @@ describe('PHOTOS ACTIONS', () => {
           type: types.FETCH_PHOTOS_SUCCESS,
           payload: {
             items: [
-                { 
-                    title:'Stretching for food',
-                    link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
-                }
+              {
+                title: 'Stretching for food',
+                link:
+                  'https://www.flickr.com/photos/vassilisonline/38593667296/'
+              }
             ]
           }
         }
@@ -93,6 +95,17 @@ describe('PHOTOS ACTIONS', () => {
       return store.dispatch(actions.fetchPhotos()).then(() => {
         expect(store.getActions()).toEqual(expectedActions);
       });
+    });
+  });
+  describe('addToFavourites', () => {
+    const input = {
+      id: '1',
+      title: 'Stretching for food',
+      link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+    };
+    expect(actions.addToFavourites(input)).toEqual({
+      type: 'ADD TO FAVOURITES',
+      payload: input
     });
   });
 });

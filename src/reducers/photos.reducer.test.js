@@ -9,7 +9,7 @@ describe('PHOTOS REDUCER', () => {
   describe('fetchPhotos', () => {
     test('adds a collection of photos to the new state', () => {
       const action = actions.fetchPhotosSuccess({
-        photos: { 
+        photos: {
           photo: [{ '2': 2 }, { '1': 1 }]
         }
       });
@@ -26,6 +26,55 @@ describe('PHOTOS REDUCER', () => {
       const action = actions.fetchPhotosFailed('error');
       const newState = reducer(initialState, action);
       expect(newState.error).toEqual('error');
+    });
+  });
+  describe('addToFavourites', () => {
+    test('adds a photo to favourites', () => {
+      const action = actions.fetchPhotosSuccess({
+        photos: {
+          photo: [
+            {
+              id: '1',
+              title: 'Stretching for food',
+              link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+            },
+            {
+              id: '2',
+              title: 'Yoga',
+              link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+            }
+          ]
+        }
+      });
+      let prevState = reducer(initialState, action);
+      expect(Array.isArray(prevState.data)).toBe(true);
+      expect(prevState.data.length).toBe(2);
+      expect(prevState.data).toEqual([
+        {
+          id: '1',
+          title: 'Stretching for food',
+          link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+        },
+        {
+          id: '2',
+          title: 'Yoga',
+          link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+        }
+      ]);
+      const input = {
+        id: '1',
+        title: 'Stretching for food',
+        link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+      };
+      const action2 = actions.addToFavourites(input);
+      const newState = reducer(prevState, action2);
+      expect(newState.data).toEqual([
+        {
+          id: '2',
+          title: 'Yoga',
+          link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+        }
+      ]);
     });
   });
 });

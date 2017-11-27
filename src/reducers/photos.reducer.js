@@ -30,6 +30,14 @@ function reducer (prevState = initialState, action = {}) {
     return newState;
   }
 
+  if (action.type === types.ADD_TO_FAVOURITES) {
+    const newState = Object.assign({}, prevState);
+    newState.data = prevState.data.filter(item => {
+      if (action.payload.id !== item.id) return item;
+    });
+    return newState;
+  }
+
   return prevState;
 }
 
