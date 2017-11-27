@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 // COMPONENTS
 import PhotoList from './PhotoList';
 
-const App = ({ photosData }) => (
+const App = ({ photosData, addToFave }) => (
   <div className="App">
     <header className="level is-mobile">
       <h1 className="level-item is-size-3">
@@ -30,12 +30,13 @@ const App = ({ photosData }) => (
         </li>
       </ul>
     </nav>
-    <PhotoList photos={photosData} />
+    <PhotoList photos={photosData} addToFave={addToFave} />
   </div>
 );
 
 App.propTypes = {
-  photosData: PropTypes.array.isRequired
+  photosData: PropTypes.array.isRequired,
+  addToFave: PropTypes.func.isRequired
 };
 
 export default App;
