@@ -49,20 +49,15 @@ The idea of this task is that it gives a candidate plenty of opportunity to shin
 
 Feel free to use any kind of tooling or libraries (CSS or JavaScript). We love vanilla JavaScript but if you really need to use jQuery that’s ok, but be warned – we are looking for developers who don’t need to use jQuery as a crutch so if you do, make sure it’s for a good reason and it’s well written (we see a lot of messy jQuery spaghetti code – yuck!). We love React, we love ES6+, we love SASS, we love tools like Gulp and Webpack, in fact we love anything that’s reasonably modern and shows you’ve considered a tool’s suitability for the job, so use whatever you feel will help you the most.
 
-What we’re looking for / deliverables
+What we’re looking for / deliverables:
+- Semantic and accessible HTML
+- Cleanly written, modular and re-usable CSS, using recognisable conventions
+- Well thought out and architected JavaScript that shows consideration to it being testable, maintainable, extensible and re-usable
+- Mobile friendly design i.e. responsive
+- Either – uses some cool features only available in modern browsers (if so, your app only needs to work in latest browsers) OR a robust layout that works as far back as IE9 – you choose which!
+- Imagination and fun! Be creative!
+- And finally, and this is important, a README file that discusses the design and technology choices you’ve used and why, any difficulties / challenges you had and how you overcame them and anything else that helps describe your approach to this piece.
 
-## Semantic and accessible HTML
-
-Cleanly written, modular and re-usable CSS, using recognisable conventions
-Well thought out and architected JavaScript that shows consideration to it being testable, maintainable, extensible and re-usable
-
-## Mobile friendly design i.e. responsive
-
-Either – uses some cool features only available in modern browsers (if so, your app only needs to work in latest browsers) OR a robust layout that works as far back as IE9 – you choose which!
-
-Imagination and fun! Be creative!
-
-And finally, and this is important, a README file that discusses the design and technology choices you’ve used and why, any difficulties / challenges you had and how you overcame them and anything else that helps describe your approach to this piece.
 The recruiter you’re dealing with will let you know how long we’d like to give you to complete the piece. If there’s certain aspects of the task you’re struggling with don’t worry, the important thing is you have fun and let your talent shine! 
 
 Best of luck!
