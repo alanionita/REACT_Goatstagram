@@ -5,7 +5,6 @@ import { Provider } from 'react-redux';
 import createBrowserHistory from 'history/createBrowserHistory';
 
 import AppContainer from './components/AppContainer';
-import App from './components/App';
 import PhotoList from './components/PhotoList';
 import FaveList from './components/FaveList';
 const history = createBrowserHistory();
@@ -13,13 +12,11 @@ const history = createBrowserHistory();
 const Routes = ({ store }) => (
   <Provider store={store}>
     <Router history={history}>
-      <AppContainer>
         <Switch>
-          <Route path="/" exact={true} component={App} />
-          <Route path="/all" exact={true} component={PhotoList} />
-          <Route path="/favourites" exact={true} component={FaveList} />
+          <Route path="/" exact={true} component={AppContainer} />
+          <Route path="/all" component={PhotoList} />
+          <Route path="/favourites" component={FaveList} />
         </Switch>
-      </AppContainer>
     </Router>
   </Provider>
 );
