@@ -36,6 +36,7 @@ function reducer (prevState = initialState, action = {}) {
     newState.favourites = prevState.favourites.concat(action.payload);
     newState.data = prevState.data.filter(item => {
       if (action.payload.id !== item.id) return item;
+      return null;
     });
     return newState;
   }

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { v4 } from 'node-uuid';
 
 // Components
 import PhotoCardMini from './PhotoCardMini';
@@ -13,7 +14,7 @@ const PhotoList = ({ photos, addToFave }) => (
             <PhotoCardMini
               title={photo.title}
               link={photo.url_m}
-              key={`allphotos-${photo.id}`}
+              key={`${v4()}${photo.id}`}
               onClick={() => addToFave(photo)}
             />
           );
