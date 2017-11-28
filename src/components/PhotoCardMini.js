@@ -35,6 +35,7 @@ const PhotoCardMini = props => {
 PhotoCardMini.propTypes = {
   title: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
+  views: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired
 };
 
