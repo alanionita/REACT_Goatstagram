@@ -4,17 +4,19 @@ import PropTypes from 'prop-types';
 // COMPONENTS
 import Header from './Header';
 import Nav from './Nav';
+import PhotoList from './PhotoList';
 
-const App = ({ children }) => (
+const App = ({ photosData, addToFave }) => (
   <main className="App">
-    <Header/>
-    <Nav/>
-    {children}
+    <Header />
+    <Nav />
+    <PhotoList photos={photosData} addToFave={addToFave}/>
   </main>
 );
 
 App.propTypes = {
-  children: PropTypes.array
+  photosData: PropTypes.array.isRequired,
+  addToFave: PropTypes.func.isRequired
 };
 
 export default App;
