@@ -5,10 +5,10 @@ const Nav = () => (
   <nav className="tabs is-centered">
     <ul>
       <li>
-        <NavLink to="/">Browse all</NavLink>
+        <NavLink to="/">All goats</NavLink>
       </li>
       <li>
-        <NavLink to="/fav">Favourites</NavLink>
+        <NavLink to="/favourites">Favourites</NavLink>
       </li>
     </ul>
   </nav>

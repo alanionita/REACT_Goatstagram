@@ -19,7 +19,7 @@ const App = ({ photosData, addToFave }) => (
         render={() => <PhotoList photos={photosData} addToFave={addToFave} />}
       />
       <Route
-        path="/fav"
+        path="/favourites"
         exact={true}
         render={() => <FaveList photos={photosData} addToFave={addToFave} />}
       />
