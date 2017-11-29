@@ -1,14 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Nav = () => (
   <nav className="tabs is-centered">
     <ul>
       <li>
-        <Link to="/all">Browse all</Link>
+        <NavLink to="/">Browse all</NavLink>
       </li>
       <li>
-        <Link to="/favourites">Favourites</Link>
+        <NavLink to="/fav">Favourites</NavLink>
       </li>
     </ul>
   </nav>

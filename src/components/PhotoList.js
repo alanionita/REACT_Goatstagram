@@ -9,7 +9,7 @@ const PhotoList = ({ photos, addToFave }) => (
   <section className="PhotoList">
     <div className="container">
       <div className="columns is-multiline is-centered">
-        {photos.map(photo => {
+        {photos.data.map(photo => {
           return (
             <PhotoCardMini
               title={photo.title}
@@ -26,7 +26,7 @@ const PhotoList = ({ photos, addToFave }) => (
 );
 
 PhotoList.propTypes = {
-  photos: PropTypes.array.isRequired,
+  photos: PropTypes.object.isRequired,
   addToFave: PropTypes.func.isRequired
 };
 

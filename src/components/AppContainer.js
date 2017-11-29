@@ -17,7 +17,6 @@ class AppContainer extends React.Component {
     return (
       <App
         photosData={this.props.photosData}
-        favouritesData={this.props.favouritesData}
         addToFave={this.props.addToFave}
       />
     );
@@ -37,16 +36,14 @@ function mapDispatchToProps (dispatch) {
 
 function mapStateToProps (state) {
   return {
-    photosData: state.photos.data,
-    favouritesData: state.photos.favourites,
+    photosData: state.photos,
     loading: state.loading
   };
 }
 
 AppContainer.propTypes = {
   fetchPhotos: PropTypes.func.isRequired,
-  photosData: PropTypes.array.isRequired,
-  favouritesData: PropTypes.array.isRequired,
+  photosData: PropTypes.object.isRequired,
   addToFave: PropTypes.func.isRequired
 };
 

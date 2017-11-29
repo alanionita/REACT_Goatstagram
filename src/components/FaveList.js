@@ -5,32 +5,31 @@ import { v4 } from 'node-uuid';
 // Components
 import PhotoCardMini from './PhotoCardMini';
 
-const FaveList = ({ photos, addToFave }) => {
-  if (photos)
-    return (
-      <section className="FaveList">
-        <div className="container">
-          <div className="columns is-multiline is-centered">
-            {photos.map(photo => {
-              return (
-                <PhotoCardMini
-                  title={photo.title}
-                  link={photo.url_m}
-                  key={`${v4()}${photo.id}`}
-                  onClick={() => addToFave(photo)}
-                />
-              );
-            })}
-          </div>
+const FaveList = ({ photos, addToFave }) =>
+  photos.favourites.length === 0 ? (
+    <p>No favourites here!</p>
+  ) : (
+    <section className="PhotoList">
+      <div className="container">
+        <div className="columns is-multiline is-centered">
+          {photos.favourites.map(photo => {
+            return (
+              <PhotoCardMini
+                title={photo.title}
+                link={photo.url_m}
+                views={photo.views}
+                key={`${v4()}${photo.id}`}
+                onClick={() => addToFave(photo)}
+              />
+            );
+          })}
         </div>
-      </section>
-    );
-
-  return <p>No favourites here</p>;
-};
+      </div>
+    </section>
+  );
 
 FaveList.propTypes = {
-  photos: PropTypes.array.isRequired,
+  photos: PropTypes.object.isRequired,
   addToFave: PropTypes.func.isRequired
 };
 
