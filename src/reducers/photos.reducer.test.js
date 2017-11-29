@@ -29,45 +29,32 @@ describe('PHOTOS REDUCER', () => {
     });
   });
   describe('addToFavourites', () => {
+    const rootAction = actions.fetchPhotosSuccess({
+      photos: {
+        photo: [
+          {
+            id: '1',
+            title: 'Stretching for food',
+            link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+          },
+          {
+            id: '2',
+            title: 'Yoga',
+            link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+          }
+        ]
+      }
+    });
+    const prevState = reducer(initialState, rootAction);
+    const input = {
+      id: '1',
+      title: 'Stretching for food',
+      link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+    };
     test('removes photo from state', () => {
-      const action = actions.fetchPhotosSuccess({
-        photos: {
-          photo: [
-            {
-              id: '1',
-              title: 'Stretching for food',
-              link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
-            },
-            {
-              id: '2',
-              title: 'Yoga',
-              link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
-            }
-          ]
-        }
-      });
-      let prevState = reducer(initialState, action);
-      expect(Array.isArray(prevState.data)).toBe(true);
       expect(prevState.data.length).toBe(2);
-      expect(prevState.data).toEqual([
-        {
-          id: '1',
-          title: 'Stretching for food',
-          link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
-        },
-        {
-          id: '2',
-          title: 'Yoga',
-          link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
-        }
-      ]);
-      const input = {
-        id: '1',
-        title: 'Stretching for food',
-        link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
-      };
-      const action2 = actions.addToFavourites(input);
-      const newState = reducer(prevState, action2);
+      const action = actions.addToFavourites(input);
+      const newState = reducer(prevState, action);
       expect(newState.data).toEqual([
         {
           id: '2',
@@ -78,44 +65,13 @@ describe('PHOTOS REDUCER', () => {
       expect(newState.data.length).toBe(1);
     });
     test('adds a photo to favourites', () => {
-      const action = actions.fetchPhotosSuccess({
-        photos: {
-          photo: [
-            {
-              id: '1',
-              title: 'Stretching for food',
-              link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
-            },
-            {
-              id: '2',
-              title: 'Yoga',
-              link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
-            }
-          ]
-        }
-      });
-      let prevState = reducer(initialState, action);
-      expect(Array.isArray(prevState.data)).toBe(true);
-      expect(prevState.data.length).toBe(2);
-      expect(prevState.data).toEqual([
-        {
-          id: '1',
-          title: 'Stretching for food',
-          link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
-        },
-        {
-          id: '2',
-          title: 'Yoga',
-          link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
-        }
-      ]);
       const input = {
         id: '1',
         title: 'Stretching for food',
         link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
       };
-      const action2 = actions.addToFavourites(input);
-      const newState = reducer(prevState, action2);
+      const action = actions.addToFavourites(input);
+      const newState = reducer(prevState, action);
       expect(newState.data).toEqual([
         {
           id: '2',
@@ -124,6 +80,7 @@ describe('PHOTOS REDUCER', () => {
         }
       ]);
       expect(newState.data.length).toBe(1);
+      expect(newState.favourites.length).toBe(1);
       expect(newState.favourites).toEqual([
         {
           id: '1',
@@ -131,7 +88,69 @@ describe('PHOTOS REDUCER', () => {
           link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
         }
       ]);
-      expect(newState.favourites.length).toBe(1);
+    });
+  });
+  describe('removeFromFavourites', () => {
+    const rootAction = actions.fetchPhotosSuccess({
+      photos: {
+        photo: [
+          {
+            id: '1',
+            title: 'Stretching for food',
+            link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+          },
+          {
+            id: '2',
+            title: 'Yoga',
+            link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+          }
+        ]
+      }
+    });
+    const prevState = reducer(initialState, rootAction);
+    const input = {
+      id: '1',
+      title: 'Stretching for food',
+      link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+    };
+    const action = actions.addToFavourites(input);
+    const newState = reducer(prevState, action);
+    expect(newState.data).toEqual([
+      {
+        id: '2',
+        title: 'Yoga',
+        link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+      }
+    ]);
+    expect(newState.data.length).toBe(1);
+    expect(newState.favourites.length).toBe(1);
+    expect(newState.favourites).toEqual([
+      {
+        id: '1',
+        title: 'Stretching for food',
+        link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+      }
+    ]);
+    test('removes photo from favourites', () => {
+      const input = {
+        id: '1',
+        title: 'Stretching for food',
+        link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+      };
+      const action = actions.removeFromFavourites(input);
+      const newState = reducer(prevState, action);
+      expect(newState.favourites.length).toBe(0);
+    });
+    test('adds photo to state', () => {
+      const input = {
+        id: '1',
+        title: 'Stretching for food',
+        link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+      };
+      const action = actions.removeFromFavourites(input);
+      const newState = reducer(prevState, action);
+      expect(newState.favourites.length).toBe(0);
+      expect(newState.data.length).toBe(3);
     });
   });
 });

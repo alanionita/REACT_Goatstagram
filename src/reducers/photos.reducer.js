@@ -41,6 +41,16 @@ function reducer (prevState = initialState, action = {}) {
     return newState;
   }
 
+  if (action.type === types.REMOVE_FROM_FAVOURITES) {
+    const newState = Object.assign({}, prevState);
+    newState.favourites = prevState.favourites.filter(item => {
+      if (action.payload.id !== item.id) return item;
+      return null;
+    });
+    newState.data = prevState.data.concat(action.payload);
+    return newState;
+  }
+
   return prevState;
 }
 

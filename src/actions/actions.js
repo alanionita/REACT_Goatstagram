@@ -41,3 +41,10 @@ export function addToFavourites (item) {
     payload: item
   };
 }
+
+export function removeFromFavourites (item) {
+  return {
+    type: types.REMOVE_FROM_FAVOURITES,
+    payload: item
+  };
+}

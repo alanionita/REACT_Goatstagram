@@ -108,4 +108,15 @@ describe('PHOTOS ACTIONS', () => {
       payload: input
     });
   });
+  describe('removeFromFavourites', () => {
+    const input = {
+      id: '1',
+      title: 'Stretching for food',
+      link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+    };
+    expect(actions.removeFromFavourites(input)).toEqual({
+      type: 'REMOVE FROM FAVOURITES',
+      payload: input
+    });
+  });
 });
