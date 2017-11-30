@@ -18,6 +18,7 @@ class AppContainer extends React.Component {
       <App
         photosData={this.props.photosData}
         addToFave={this.props.addToFave}
+        removeFromFave={this.props.removeFromFave}
       />
     );
   }
@@ -30,6 +31,9 @@ function mapDispatchToProps (dispatch) {
     },
     addToFave: input => {
       dispatch(actions.addToFavourites(input));
+    },
+    removeFromFave: input => {
+      dispatch(actions.removeFromFavourites(input));
     }
   };
 }
@@ -44,7 +48,8 @@ function mapStateToProps (state) {
 AppContainer.propTypes = {
   fetchPhotos: PropTypes.func.isRequired,
   photosData: PropTypes.object.isRequired,
-  addToFave: PropTypes.func.isRequired
+  addToFave: PropTypes.func.isRequired,
+  removeFromFave: PropTypes.func.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);

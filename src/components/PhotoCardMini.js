@@ -2,23 +2,25 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const PhotoCardMini = props => {
-  const { title, link, onClick, views } = props;
+  const { title, link, onClick, views, isFave } = props;
   return (
     <section className="column is-three-fifths-mobile is-half-tablet is-one-third-desktop">
       <div className="card">
         <div className="level is-mobile">
           <div className="level-left">
-            <h1 className="card-header-title level-item">{title.substring(0, 10)}</h1>
+            <h1 className="card-header-title level-item">
+              {title.substring(0, 15)}
+            </h1>
           </div>
+          <h3 className="level-item">{views} views</h3>
           <div className="level-right">
-            <p className="card-header-title level-item">{views} views</p>
             <span
               className="card-header-title level-item"
               onClick={onClick}
               role="img"
               aria-label="heart emoji"
             >
-              ❤️
+              {isFave === true ? '❤️' : '🖤'}
             </span>
           </div>
         </div>
@@ -36,7 +38,8 @@ PhotoCardMini.propTypes = {
   title: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
   views: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
+  isFave: PropTypes.bool.isRequired
 };
 
 export default PhotoCardMini;

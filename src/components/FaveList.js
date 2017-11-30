@@ -5,11 +5,11 @@ import { v4 } from 'node-uuid';
 // Components
 import PhotoCardMini from './PhotoCardMini';
 
-const FaveList = ({ photos, addToFave }) =>
+const FaveList = ({ photos, removeFromFave }) =>
   photos.favourites.length === 0 ? (
-    <p>No favourites here!</p>
+    <h2>No favourites here!</h2>
   ) : (
-    <section className="PhotoList">
+    <section className="FaveList">
       <div className="container">
         <div className="columns is-multiline is-centered">
           {photos.favourites.map(photo => {
@@ -19,7 +19,8 @@ const FaveList = ({ photos, addToFave }) =>
                 link={photo.url_m}
                 views={photo.views}
                 key={`${v4()}${photo.id}`}
-                onClick={() => addToFave(photo)}
+                onClick={() => removeFromFave(photo)}
+                isFave={true}
               />
             );
           })}
@@ -30,7 +31,7 @@ const FaveList = ({ photos, addToFave }) =>
 
 FaveList.propTypes = {
   photos: PropTypes.object.isRequired,
-  addToFave: PropTypes.func.isRequired
+  removeFromFave: PropTypes.func.isRequired
 };
 
 export default FaveList;
