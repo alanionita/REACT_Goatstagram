@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const PhotoCardMini = props => {
   const { title, link, onClick, views, isFave } = props;
   return (
-    <section className="column is-three-fifths-mobile is-half-tablet is-one-third-desktop">
+    <section className="column is-four-fifths-mobile is-two-fifths-tablet is-one-third-desktop">
       <div className="card">
         <div className="level is-mobile">
           <div className="level-left">

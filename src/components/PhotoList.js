@@ -14,7 +14,7 @@ class PhotoList extends React.Component {
     return (
       <section className="PhotoList">
         <div className="container">
-          <div className="columns is-multiline is-centered">
+          <div className="columns is-multiline is-mobile is-centered">
             {this.props.photos.data.map(
               photo =>
                 !photo.url_m ? null : (

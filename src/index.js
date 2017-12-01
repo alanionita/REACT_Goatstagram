@@ -10,7 +10,7 @@ import combinedReducer from './reducers/index';
 import { loadState, saveState } from './localStorage';
 
 // CSS
-import './css/bulma.css';
+import './css/stylesheets/screen.css';
 
 // COMPONENTS
 import Routes from './Routes';

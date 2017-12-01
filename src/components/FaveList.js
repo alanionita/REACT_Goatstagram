@@ -17,7 +17,7 @@ class FaveList extends React.Component {
     ) : (
       <section className="FaveList">
         <div className="container">
-          <div className="columns is-multiline is-centered">
+          <div className="columns is-multiline is-mobile is-centered">
             {photos.favourites.map(photo => {
               return (
                 <PhotoCardMini
@@ -41,7 +41,7 @@ class FaveList extends React.Component {
 
 FaveList.propTypes = {
   photos: PropTypes.object.isRequired,
-  removeFromFave: PropTypes.func.isRequired
+  removeFromFave: PropTypes.func
 };
 
 export default FaveList;
