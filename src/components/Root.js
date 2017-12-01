@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Router, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router';
 import { Provider } from 'react-redux';
 import createBrowserHistory from 'history/createBrowserHistory';
+import AppContainer from './AppContainer';
 
-import AppContainer from './components/AppContainer';
 const history = createBrowserHistory();
 
-const Routes = ({ store }) => (
+const Root = ({ store }) => (
   <Provider store={store}>
     <Router history={history}>
       <Switch>
@@ -17,8 +17,8 @@ const Routes = ({ store }) => (
   </Provider>
 );
 
-Routes.propTypes = {
+Root.propTypes = {
   store: PropTypes.object.isRequired
 };
 
-export default Routes;
+export default Root;

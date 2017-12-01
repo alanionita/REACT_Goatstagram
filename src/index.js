@@ -1,30 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import registerServiceWorker from './registerServiceWorker';
-
-// REDUX
-import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import logger from 'redux-logger';
-import combinedReducer from './reducers/index';
-import { loadState, saveState } from './localStorage';
+import configureStore from './configureStore';
 
 // CSS
 import './css/stylesheets/main.css';
 
 // COMPONENTS
-import Routes from './Routes';
+import Root from './components/Root';
 
-const persistedState = loadState();
-const store = createStore(
-  combinedReducer,
-  persistedState,
-  applyMiddleware(thunk, logger)
-);
+const store = configureStore();
 
-store.subscribe(() => {
-  saveState(store.getState());
-});
-
-ReactDOM.render(<Routes store={store} />, document.getElementById('root'));
+ReactDOM.render(<Root store={store} />, document.getElementById('root'));
 registerServiceWorker();

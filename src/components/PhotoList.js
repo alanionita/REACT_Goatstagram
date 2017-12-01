@@ -15,22 +15,15 @@ class PhotoList extends React.Component {
     return this.props.photos.length === 0 ? (
       this.props.path === '/favourites' ? (
         <section className="hero is-medium">
-          <div className="hero-body">
-            <div className="container">
-              <h1 className="title has-text-centered">
-                {'Oh no, you haven\'t favourited any goats yet!'}
-              </h1>
-              <h1 className="title has-text-centered">
-              </h1>
-            </div>
-          </div>
+          <p className="subtitle has-text-centered">
+            {'Oh no, you haven\'t favourited any goats yet!'}
+          </p>
         </section>
       ) : (
         <div className="container">
           <div className="columns is-multiline is-mobile is-centered">
             <div className="column is-four-fifths-mobile is-two-fifths-tablet is-one-third-desktop">
               <Spinner name="pacman" color="#60C320" />
-        <i className="fa fa-window-close" aria-hidden="true" />
             </div>
           </div>
         </div>

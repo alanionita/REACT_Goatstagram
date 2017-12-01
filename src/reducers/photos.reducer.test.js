@@ -7,47 +7,119 @@ describe('PHOTOS REDUCER', () => {
     expect(typeof reducer).toBe('function');
   });
   describe('fetchPhotos', () => {
-    const action = actions.fetchPhotosSuccess({
-      photos: {
-        photo: [
-          {
-            id: '1',
-            title: 'Stretching for food',
-            url_m: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
-          },
-          {
-            id: '2',
-            title: 'Yoga',
-            url_m: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
-          }
-        ]
-      }
-    });
-    test('adds a collection of photos to the new state', () => {
+    test('adds a collection of photos to an empty state', () => {
+      const action = actions.fetchPhotosSuccess({
+        photos: {
+          photo: [
+            {
+              id: '35057169673',
+              title: 'GOAT',
+              views: '1109',
+              url_m:
+                'https://farm5.staticflickr.com/4288/35057169673_7610627c7e.jpg'
+            },
+            {
+              id: '9117768351',
+              title: 'Goat (1)',
+              views: '10267',
+              url_m:
+                'https://farm6.staticflickr.com/5502/9117768351_a1121f1791.jpg'
+            }
+          ]
+        }
+      });
       const newState = reducer(initialState, action);
       expect(Array.isArray(newState.data)).toBe(true);
       expect(newState.data).toEqual([
         {
-          id: '1',
-          title: 'Stretching for food',
-          url_m: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+          id: '35057169673',
+          title: 'GOAT',
+          views: '1109',
+          url_m:
+            'https://farm5.staticflickr.com/4288/35057169673_7610627c7e.jpg'
         },
         {
-          id: '2',
-          title: 'Yoga',
-          url_m: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+          id: '9117768351',
+          title: 'Goat (1)',
+          views: '10267',
+          url_m: 'https://farm6.staticflickr.com/5502/9117768351_a1121f1791.jpg'
         }
       ]);
+      expect(newState).not.toMatchObject(initialState);
     });
     test('changes the loading property in the new state', () => {
       const action = actions.fetchPhotosRequest();
       const newState = reducer(initialState, action);
       expect(newState.loading).toBe(true);
+      expect(newState).not.toMatchObject(initialState);
     });
     test('returns the error if it fails', () => {
       const action = actions.fetchPhotosFailed('error');
       const newState = reducer(initialState, action);
       expect(newState.error).toEqual('error');
+      expect(newState).not.toMatchObject(initialState);
+    });
+    test('adds diffs to an existing state', () => {
+      const prevState = {
+        data: [
+          {
+            id: '35057169673',
+            title: 'GOAT',
+            views: '1109',
+            url_m:
+              'https://farm5.staticflickr.com/4288/35057169673_7610627c7e.jpg'
+          },
+          {
+            id: '9117768351',
+            title: 'Goat (1)',
+            views: '10267',
+            url_m:
+              'https://farm6.staticflickr.com/5502/9117768351_a1121f1791.jpg'
+          }
+        ],
+        favourites: [],
+        error: null,
+        loading: false
+      };
+      const action = actions.fetchPhotosSuccess({
+        photos: {
+          photo: [
+            {
+              id: '35057169673',
+              title: 'GOAT',
+              views: '1109',
+              url_m:
+                'https://farm5.staticflickr.com/4288/35057169673_7610627c7e.jpg'
+            },
+            {
+              id: '9117768351',
+              title: 'Goat (1)',
+              views: '10267',
+              url_m:
+                'https://farm6.staticflickr.com/5502/9117768351_a1121f1791.jpg'
+            }
+          ]
+        }
+      });
+      const newState = reducer(prevState, action);
+      expect(Array.isArray(newState.data)).toBe(true);
+      expect(newState.data).toEqual([
+        {
+          id: '35057169673',
+          title: 'GOAT',
+          views: '1109',
+          url_m:
+            'https://farm5.staticflickr.com/4288/35057169673_7610627c7e.jpg'
+        },
+        {
+          id: '9117768351',
+          title: 'Goat (1)',
+          views: '10267',
+          url_m: 'https://farm6.staticflickr.com/5502/9117768351_a1121f1791.jpg'
+        }
+      ]);
+      expect(newState.data.length).toBe(2);
+      expect(newState).not.toMatchObject(initialState);
     });
   });
   describe('addToFavourites', () => {
@@ -55,23 +127,28 @@ describe('PHOTOS REDUCER', () => {
       photos: {
         photo: [
           {
-            id: '1',
-            title: 'Stretching for food',
-            url_m: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+            id: '35057169673',
+            title: 'GOAT',
+            views: '1109',
+            url_m:
+              'https://farm5.staticflickr.com/4288/35057169673_7610627c7e.jpg'
           },
           {
-            id: '2',
-            title: 'Yoga',
-            url_m: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+            id: '9117768351',
+            title: 'Goat (1)',
+            views: '10267',
+            url_m:
+              'https://farm6.staticflickr.com/5502/9117768351_a1121f1791.jpg'
           }
         ]
       }
     });
     const prevState = reducer(initialState, rootAction);
     const input = {
-      id: '1',
-      title: 'Stretching for food',
-      url_m: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+      id: '9117768351',
+      title: 'Goat (1)',
+      views: '10267',
+      url_m: 'https://farm6.staticflickr.com/5502/9117768351_a1121f1791.jpg'
     };
     test('removes photo from state', () => {
       expect(prevState.data.length).toBe(2);
@@ -79,9 +156,11 @@ describe('PHOTOS REDUCER', () => {
       const newState = reducer(prevState, action);
       expect(newState.data).toEqual([
         {
-          id: '2',
-          title: 'Yoga',
-          url_m: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+          id: '35057169673',
+          title: 'GOAT',
+          views: '1109',
+          url_m:
+            'https://farm5.staticflickr.com/4288/35057169673_7610627c7e.jpg'
         }
       ]);
       expect(newState.data.length).toBe(1);
@@ -91,20 +170,16 @@ describe('PHOTOS REDUCER', () => {
       const newState = reducer(prevState, action);
       expect(newState.data).toEqual([
         {
-          id: '2',
-          title: 'Yoga',
-          url_m: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+          id: '35057169673',
+          title: 'GOAT',
+          views: '1109',
+          url_m:
+            'https://farm5.staticflickr.com/4288/35057169673_7610627c7e.jpg'
         }
       ]);
       expect(newState.data.length).toBe(1);
       expect(newState.favourites.length).toBe(1);
-      expect(newState.favourites).toEqual([
-        {
-          id: '1',
-          title: 'Stretching for food',
-          url_m: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
-        }
-      ]);
+      expect(newState.favourites).toEqual([input]);
     });
   });
   describe('removeFromFavourites', () => {
@@ -112,47 +187,55 @@ describe('PHOTOS REDUCER', () => {
       photos: {
         photo: [
           {
-            id: '1',
-            title: 'Stretching for food',
-            url_m: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+            id: '35057169673',
+            title: 'GOAT',
+            views: '1109',
+            url_m:
+              'https://farm5.staticflickr.com/4288/35057169673_7610627c7e.jpg'
           },
           {
-            id: '2',
-            title: 'Yoga',
-            url_m: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+            id: '9117768351',
+            title: 'Goat (1)',
+            views: '10267',
+            url_m:
+              'https://farm6.staticflickr.com/5502/9117768351_a1121f1791.jpg'
           }
         ]
       }
     });
     const prevState = reducer(initialState, rootAction);
     const input = {
-      id: '1',
-      title: 'Stretching for food',
-      url_m: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+      id: '35057169673',
+      title: 'GOAT',
+      views: '1109',
+      url_m: 'https://farm5.staticflickr.com/4288/35057169673_7610627c7e.jpg'
     };
     const action = actions.addToFavourites(input);
     const newState = reducer(prevState, action);
     expect(newState.data).toEqual([
       {
-        id: '2',
-        title: 'Yoga',
-        url_m: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+        id: '9117768351',
+        title: 'Goat (1)',
+        views: '10267',
+        url_m: 'https://farm6.staticflickr.com/5502/9117768351_a1121f1791.jpg'
       }
     ]);
     expect(newState.data.length).toBe(1);
     expect(newState.favourites.length).toBe(1);
     expect(newState.favourites).toEqual([
       {
-        id: '1',
-        title: 'Stretching for food',
-        url_m: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+        id: '35057169673',
+        title: 'GOAT',
+        views: '1109',
+        url_m: 'https://farm5.staticflickr.com/4288/35057169673_7610627c7e.jpg'
       }
     ]);
     test('removes photo from favourites', () => {
       const input = {
-        id: '1',
-        title: 'Stretching for food',
-        url_m: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+        id: '35057169673',
+        title: 'GOAT',
+        views: '1109',
+        url_m: 'https://farm5.staticflickr.com/4288/35057169673_7610627c7e.jpg'
       };
       const action = actions.removeFromFavourites(input);
       const newState = reducer(prevState, action);
@@ -160,9 +243,10 @@ describe('PHOTOS REDUCER', () => {
     });
     test('adds photo to state', () => {
       const input = {
-        id: '1',
-        title: 'Stretching for food',
-        link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+        id: '35057169673',
+        title: 'GOAT',
+        views: '1109',
+        url_m: 'https://farm5.staticflickr.com/4288/35057169673_7610627c7e.jpg'
       };
       const action = actions.removeFromFavourites(input);
       const newState = reducer(prevState, action);

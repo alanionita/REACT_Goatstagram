@@ -19,12 +19,24 @@ describe('PHOTOS ACTIONS', () => {
   describe('fetchPhotosSuccess', () => {
     test('returns \'FETCH PHOTOS SUCCESS\' and payload', () => {
       const input = {
-        items: [
-          {
-            title: 'Stretching for food',
-            link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
-          }
-        ]
+        photos: {
+          photo: [
+            {
+              id: '35057169673',
+              title: 'GOAT',
+              views: '1109',
+              url_m:
+                'https://farm5.staticflickr.com/4288/35057169673_7610627c7e.jpg'
+            },
+            {
+              id: '9117768351',
+              title: 'Goat (1)',
+              views: '10267',
+              url_m:
+                'https://farm6.staticflickr.com/5502/9117768351_a1121f1791.jpg'
+            }
+          ]
+        }
       };
       expect(actions.fetchPhotosSuccess(input)).toEqual({
         type: 'FETCH PHOTOS SUCCESS',
@@ -51,30 +63,36 @@ describe('PHOTOS ACTIONS', () => {
     afterEach(() => {
       moxios.uninstall;
     });
-    test('returns correct series of actions and payload if succesful', () => {
+    test('adds payload to an empty store', () => {
       moxios.wait(() => {
         const request = moxios.requests.mostRecent();
         request.respondWith({
           status: 200,
           response: {
-            items: [
-              {
-                title: 'Stretching for food',
-                link:
-                  'https://www.flickr.com/photos/vassilisonline/38593667296/'
-              }
-            ]
+            photos: {
+              photo: [
+                {
+                  id: '35057169673',
+                  title: 'GOAT',
+                  views: '1109',
+                  url_m:
+                    'https://farm5.staticflickr.com/4288/35057169673_7610627c7e.jpg'
+                },
+                {
+                  id: '9117768351',
+                  title: 'Goat (1)',
+                  views: '10267',
+                  url_m:
+                    'https://farm6.staticflickr.com/5502/9117768351_a1121f1791.jpg'
+                }
+              ]
+            }
           }
         });
       });
 
       const store = mockStore({
-        items: [
-          {
-            title: 'Stretching for food',
-            link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
-          }
-        ]
+        items: []
       });
 
       const expectedActions = [
@@ -82,13 +100,24 @@ describe('PHOTOS ACTIONS', () => {
         {
           type: types.FETCH_PHOTOS_SUCCESS,
           payload: {
-            items: [
-              {
-                title: 'Stretching for food',
-                link:
-                  'https://www.flickr.com/photos/vassilisonline/38593667296/'
-              }
-            ]
+            photos: {
+              photo: [
+                {
+                  id: '35057169673',
+                  title: 'GOAT',
+                  views: '1109',
+                  url_m:
+                    'https://farm5.staticflickr.com/4288/35057169673_7610627c7e.jpg'
+                },
+                {
+                  id: '9117768351',
+                  title: 'Goat (1)',
+                  views: '10267',
+                  url_m:
+                    'https://farm6.staticflickr.com/5502/9117768351_a1121f1791.jpg'
+                }
+              ]
+            }
           }
         }
       ];
@@ -99,9 +128,10 @@ describe('PHOTOS ACTIONS', () => {
   });
   describe('addToFavourites', () => {
     const input = {
-      id: '1',
-      title: 'Stretching for food',
-      link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+      id: '35057169673',
+      title: 'GOAT',
+      views: '1109',
+      url_m: 'https://farm5.staticflickr.com/4288/35057169673_7610627c7e.jpg'
     };
     expect(actions.addToFavourites(input)).toEqual({
       type: 'ADD TO FAVOURITES',
@@ -110,9 +140,10 @@ describe('PHOTOS ACTIONS', () => {
   });
   describe('removeFromFavourites', () => {
     const input = {
-      id: '1',
-      title: 'Stretching for food',
-      link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+      id: '35057169673',
+      title: 'GOAT',
+      views: '1109',
+      url_m: 'https://farm5.staticflickr.com/4288/35057169673_7610627c7e.jpg'
     };
     expect(actions.removeFromFavourites(input)).toEqual({
       type: 'REMOVE FROM FAVOURITES',
