@@ -10,14 +10,14 @@ const mockStore = configureMockStore(middleware);
 
 describe('PHOTOS ACTIONS', () => {
   describe('fetchPhotosRequest', () => {
-    test('returns \'FETCH PHOTOS REQUEST\'', () => {
+    test('returns \'FETCH_PHOTOS_REQUEST\'', () => {
       expect(actions.fetchPhotosRequest()).toEqual({
-        type: 'FETCH PHOTOS REQUEST'
+        type: 'FETCH_PHOTOS_REQUEST'
       });
     });
   });
   describe('fetchPhotosSuccess', () => {
-    test('returns \'FETCH PHOTOS SUCCESS\' and payload', () => {
+    test('returns \'FETCH_PHOTOS_SUCCESS\' and payload', () => {
       const input = {
         photos: {
           photo: [
@@ -39,18 +39,18 @@ describe('PHOTOS ACTIONS', () => {
         }
       };
       expect(actions.fetchPhotosSuccess(input)).toEqual({
-        type: 'FETCH PHOTOS SUCCESS',
+        type: 'FETCH_PHOTOS_SUCCESS',
         payload: input
       });
     });
   });
   describe('fetchPhotosFailed ', () => {
-    test('returns \'FETCH PHOTOS FAILED\' and payload', () => {
+    test('returns \'FETCH_PHOTOS_FAILED\' and payload', () => {
       const err = {
         err: 'I am an error!'
       };
       expect(actions.fetchPhotosFailed(err)).toEqual({
-        type: 'FETCH PHOTOS FAILED',
+        type: 'FETCH_PHOTOS_FAILED',
         payload: err
       });
     });
@@ -134,7 +134,7 @@ describe('PHOTOS ACTIONS', () => {
       url_m: 'https://farm5.staticflickr.com/4288/35057169673_7610627c7e.jpg'
     };
     expect(actions.addToFavourites(input)).toEqual({
-      type: 'ADD TO FAVOURITES',
+      type: 'ADD_TO_FAVOURITES',
       payload: input
     });
   });
@@ -146,7 +146,7 @@ describe('PHOTOS ACTIONS', () => {
       url_m: 'https://farm5.staticflickr.com/4288/35057169673_7610627c7e.jpg'
     };
     expect(actions.removeFromFavourites(input)).toEqual({
-      type: 'REMOVE FROM FAVOURITES',
+      type: 'REMOVE_FROM_FAVOURITES',
       payload: input
     });
   });

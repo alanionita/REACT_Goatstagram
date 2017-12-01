@@ -5,14 +5,16 @@ allows you to like / unlike photos from Flickr.
 
 ![screenshot of the app](./app-screenshot.png)
 
-## Quick start (browse a hosted version from Heroku)
+## Quick start link
 
-[Follow this link](http://ao-tech-challenge.herokuapp.com/)
+[Hosted on Heroku](http://ao-tech-challenge.herokuapp.com/)
 
 ## Thoughts & designs
 
 I chose the Instagram style layout because it matched the styles of the deals
 page at the time (Black Friday).
+
+![black friday deals](./black-friday-deals.png)
 
 Like the deals page, the SPA layout starts out as a grid of 3 cards per row,
 shrinking to two on tablets and one on mobile.
@@ -31,6 +33,48 @@ environment variables:
 
 https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=XXXXXXXXXX&user_id=&tags=animals&text=goats&sort=relevance&safe_search=&content_type=1&place_id=&media=&extras=url_m%2C+views&format=json&nojsoncallback=1
 
+Sample API response:
+
+```json
+{
+  photos: {
+  page: 1,
+  pages: 272,
+  perpage: 250,
+  total: "67872",
+  photo: [
+    {
+    id: "35057169673",
+    owner: "92329438@N05",
+    secret: "7610627c7e",
+    server: "4288",
+    farm: 5,
+    title: "GOAT",
+    ispublic: 1,
+    isfriend: 0,
+    isfamily: 0,
+    views: "1109",
+    url_m: "https://farm5.staticflickr.com/4288/35057169673_7610627c7e.jpg",
+    height_m: "333",
+    width_m: "500"
+    },
+    {
+    id: "2708083516",
+    owner: "11614603@N05",
+    secret: "c0b1d3b94f",
+    server: "3142",
+    farm: 4,
+    title: "goat",
+    ispublic: 1,
+    isfriend: 0,
+    isfamily: 0,
+    views: "5090",
+    url_m: "https://farm4.staticflickr.com/3142/2708083516_c0b1d3b94f.jpg",
+    height_m: "375",
+    width_m: "500"
+    },
+```
+
 The method used was flickr.photo.search, because it returned the most relevant
 results paired with:
 
@@ -42,13 +86,13 @@ results paired with:
 ### The Application Data
 
 App data is handled by Redux with a very simple set of actions and reducers.
-Most of the unit testing had been done on the Redux, after all the data dictates
+Most of the unit testing had been done on the Redux actions/reducers, after all the data dictates
 changes to the UI.
 
-The redux store mainly contains the photosData object which branches into photos
+The Redux store mainly contains the photosData object which branches into photos
 and favourites. An action populated main photosData.
 
-The app allow a visitor to quickly favourite a photo, which triggers another set
+The app allows a visitor to quickly favourite a photo, which triggers another set
 of actions that either remove the photo from state and adds it to favourites or
 vice versa.
 
@@ -60,7 +104,7 @@ Routing is done using React Router v4 and it covers two routes: '/' and
 Routing caused some problems because the app required a container component to
 render parent which in turn would render a list with two different props.
 Routing v4 always seems to be awkward because there's a shortage of well written
-guides out there and the big changes in architecture.
+guides out there. It's also a huge change in usage patterns.
 
 ### Persistent storage
 
@@ -96,24 +140,36 @@ export const saveState = state => {
 ### CSS and styling
 
 For speed considerations I decided to use bulma for styling, a css framework
-that uses Flexbox. What I gained in speed I lost in bloat, so to get rid of
+that uses Flexbox. 
+
+What I gained in speed I lost in bloat, so to get rid of
 redudant code I used Sass to only load the components I needed and edit the
 framework default variables.
 
-Made use of Font Awesome for icons and Sass again to custom load the components.
+Made use of Font Awesome for icons and Sass again to custom load those components.
+
+#### Responsiveness and Browser support 
+
+- tested in Safari emulator on all devices down to iPhone 5 
+- potential improvements to be made on high resolution devices 
+- tested in Safari emulator on all modern and legacy browsers, as far back as IE7
+- tested in Chrome emulator with some issues on iPhone 5, I actually put it down to the emulator because Safari renders perfectly
+- hardware testing on iPhone 6, 6 Plus, iPad Mini
 
 ### Code quality
 
 I'm a big fan of the Airbnb Javascript style guide so I used their linting
-packages alongside Prettier, a code formater. The linting plugin also include
-a11y accesibility rules. Further accesibility considerations went into the
-dynamic Title tag swapping between the two routes of the app.
+packages alongside Prettier, a code formater. The linting plugin also includes the
+a11y accesibility rules (loaded up as a linting plugin). 
 
-Husky was use to run tests and linting before every test.
+Further accesibility considerations went into the
+dynamic Title tag swapping between the two routes of the app. More work could be done, mainly around focus navigation and loggin messages.
 
-### Avoiding the rerender of favourite items
+Husky was used to run tests and linting before every test.
 
-Took me a bit to get my head around this but using a nested filter we can check
+### Avoiding the re-render of favourite items
+
+Took me a bit to get my head around this but via a nested filter we can check
 the incoming action playload by the existing favourites and we can remove the
 intersecting items.
 
@@ -129,6 +185,18 @@ newState.data = action.payload.photos.photo.filter(
 
 These instructions will get you a copy of the project up and running on your
 local machine for development and testing purposes.
+
+DISCLAIMER: the app will fail locally because it requires a .env.development.local file with a 
+variable of 'REACT_APP_API_URL='.
+
+If you still want to proceed with this install:
+
+* create the file locally
+* add an API route that returns similar results to the sample above
+* be mindful of the component requierments for 'views' and 'url_m links' data
+
+Otherwise please check the app through
+[Heroku](http://ao-tech-challenge.herokuapp.com/)
 
 ### Prerequisites
 
@@ -367,7 +435,6 @@ fetchPhotos() photos.reducer.js
 |  |  ├── index.js
 |  |  ├── photos.reducer.js
 |  |  └── photos.reducer.test.js
-|  └── registerServiceWorker.js
 ├── static.json
 └── task.md
 ```

@@ -5,7 +5,7 @@ const PhotoCardMini = props => {
   const { title, link, onClick, views, path } = props;
   return (
     <section className="column is-four-fifths-mobile is-two-fifths-tablet is-one-third-desktop">
-      <div className="card">
+      <article className="card">
         <div className="level is-mobile" style={{ marginBottom: 0 }}>
           <div className="level-left">
             <h1 className="card-header-title level-item">
@@ -33,7 +33,7 @@ const PhotoCardMini = props => {
             <img src={link} alt={title} style={{ objectFit: 'cover' }} />
           </figure>
         </div>
-      </div>
+      </article>
     </section>
   );
 };

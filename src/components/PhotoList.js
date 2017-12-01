@@ -20,13 +20,13 @@ class PhotoList extends React.Component {
           </p>
         </section>
       ) : (
-        <div className="container">
+        <section className="container">
           <div className="columns is-multiline is-mobile is-centered">
             <div className="column is-four-fifths-mobile is-two-fifths-tablet is-one-third-desktop">
               <Spinner name="pacman" color="#60C320" />
             </div>
           </div>
-        </div>
+        </section>
       )
     ) : (
       <section className="PhotoList">
