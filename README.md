@@ -2,7 +2,7 @@
 
 My own interpretation of the AO.com challenge: create an image-based SPA that allows you to like / unlike photos from Flickr.
 
-![screencast of the app](http://g.recordit.co/fVngcoTGQa.gif "App screencast")
+![screenshot of the app](./app-screenshot.png)
 
 ## Quick start (browse a hosted version from Heroku)
 
