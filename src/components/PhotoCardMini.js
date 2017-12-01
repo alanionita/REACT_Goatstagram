@@ -39,7 +39,7 @@ PhotoCardMini.propTypes = {
   link: PropTypes.string.isRequired,
   views: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
-  isFave: PropTypes.bool.isRequired
+  isFave: PropTypes.bool
 };
 
 export default PhotoCardMini;

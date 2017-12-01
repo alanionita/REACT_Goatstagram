@@ -65,11 +65,6 @@ describe('PHOTOS REDUCER', () => {
       expect(newState.data.length).toBe(1);
     });
     test('adds a photo to favourites', () => {
-      const input = {
-        id: '1',
-        title: 'Stretching for food',
-        link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
-      };
       const action = actions.addToFavourites(input);
       const newState = reducer(prevState, action);
       expect(newState.data).toEqual([
