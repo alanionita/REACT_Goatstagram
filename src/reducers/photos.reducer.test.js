@@ -59,7 +59,7 @@ describe('PHOTOS REDUCER', () => {
       expect(newState.error).toEqual('error');
       expect(newState).not.toMatchObject(initialState);
     });
-    test('adds diffs to an existing state', () => {
+    test('will not add copies to existing state', () => {
       const prevState = {
         data: [
           {
@@ -119,6 +119,84 @@ describe('PHOTOS REDUCER', () => {
         }
       ]);
       expect(newState.data.length).toBe(2);
+      expect(newState).not.toMatchObject(initialState);
+    });
+    test('will not add add favourites to photos', () => {
+      const prevState = {
+        data: [
+          {
+            id: '35057169673',
+            title: 'GOAT',
+            views: '1109',
+            url_m:
+              'https://farm5.staticflickr.com/4288/35057169673_7610627c7e.jpg'
+          },
+          {
+            id: '9117768351',
+            title: 'Goat (1)',
+            views: '10267',
+            url_m:
+              'https://farm6.staticflickr.com/5502/9117768351_a1121f1791.jpg'
+          }
+        ],
+        favourites: [
+          {
+            id: '2746155554',
+            title: 'goat',
+            views: '4666',
+            url_m:
+              'https://farm4.staticflickr.com/3184/2746155554_0ea35488f3.jpg'
+          }
+        ],
+        error: null,
+        loading: false
+      };
+      const action = actions.fetchPhotosSuccess({
+        photos: {
+          photo: [
+            {
+              id: '35057169673',
+              title: 'GOAT',
+              views: '1109',
+              url_m:
+                'https://farm5.staticflickr.com/4288/35057169673_7610627c7e.jpg'
+            },
+            {
+              id: '9117768351',
+              title: 'Goat (1)',
+              views: '10267',
+              url_m:
+                'https://farm6.staticflickr.com/5502/9117768351_a1121f1791.jpg'
+            },
+            {
+              id: '2746155554',
+              title: 'goat',
+              views: '4666',
+              url_m:
+                'https://farm4.staticflickr.com/3184/2746155554_0ea35488f3.jpg'
+            }
+          ]
+        }
+      });
+      const newState = reducer(prevState, action);
+      expect(Array.isArray(newState.data)).toBe(true);
+      expect(newState.data).toEqual([
+        {
+          id: '35057169673',
+          title: 'GOAT',
+          views: '1109',
+          url_m:
+            'https://farm5.staticflickr.com/4288/35057169673_7610627c7e.jpg'
+        },
+        {
+          id: '9117768351',
+          title: 'Goat (1)',
+          views: '10267',
+          url_m: 'https://farm6.staticflickr.com/5502/9117768351_a1121f1791.jpg'
+        }
+      ]);
+      expect(newState.data.length).toBe(2);
+      expect(newState.favourites.length).toBe(1);
       expect(newState).not.toMatchObject(initialState);
     });
   });

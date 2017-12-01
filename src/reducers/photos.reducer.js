@@ -1,5 +1,4 @@
 import * as types from '../actions/types';
-
 export const initialState = {
   data: [],
   favourites: [],
@@ -18,7 +17,11 @@ function reducer (prevState = initialState, action = {}) {
 
   if (action.type === types.FETCH_PHOTOS_SUCCESS) {
     const newState = Object.assign({}, prevState);
-    newState.data = newState.data.concat(action.payload.photos.photo);
+    newState.data = action.payload.photos.photo.filter(
+      photosElem =>
+        newState.favourites.filter(favElem => favElem.id == photosElem.id)
+          .length == 0
+    );
     newState.loading = false;
     return newState;
   }
@@ -34,19 +37,17 @@ function reducer (prevState = initialState, action = {}) {
   if (action.type === types.ADD_TO_FAVOURITES) {
     const newState = Object.assign({}, prevState);
     newState.favourites = prevState.favourites.concat(action.payload);
-    newState.data = prevState.data.filter(item => {
-      if (action.payload.id !== item.id) return item;
-      return null;
-    });
+    newState.data = prevState.data.filter(
+      item => (action.payload.id !== item.id ? item : null)
+    );
     return newState;
   }
 
   if (action.type === types.REMOVE_FROM_FAVOURITES) {
     const newState = Object.assign({}, prevState);
-    newState.favourites = prevState.favourites.filter(item => {
-      if (action.payload.id !== item.id) return item;
-      return null;
-    });
+    newState.favourites = prevState.favourites.filter(
+      item => (action.payload.id !== item.id ? item : null)
+    );
     newState.data = prevState.data.concat(action.payload);
     return newState;
   }
