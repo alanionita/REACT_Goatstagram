@@ -1,3 +1,16 @@
+@import "../../../node_modules/bulma/sass/utilities/initial-variables";
+@import "../../../node_modules/bulma/sass/utilities/functions";
+
+$aogreen: #60C320;
+$aowhite: #EAEAEA;
+$primary: $green;
+$family-sans-serif: ozBold,Arial,Helvetica,sans-serif;
+
+@import "../../../node_modules/bulma/sass/utilities/derived-variables";
+
+$aowhite: #EAEAEA;
+$background: $aowhite;
+
 @import "../../../node_modules/bulma/sass/utilities/_all";
 @import "../../../node_modules/bulma/sass/base/_all";
 @import "../../../node_modules/bulma/sass/grid/columns";
@@ -6,7 +19,12 @@
 @import "../../../node_modules/bulma/sass/elements/title";
 @import "../../../node_modules/bulma/sass/elements/image";
 @import "../../../node_modules/bulma/sass/components/tabs";
+
 @import "../../../node_modules/bulma/sass/components/card";
+
+$card-background-color: $white;
+$card-shadow: 0 1px 2px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.1);
+
 @import "../../../node_modules/bulma/sass/components/level";
 
 

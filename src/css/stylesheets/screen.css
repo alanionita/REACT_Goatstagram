@@ -130,7 +130,7 @@ button,
 input,
 select,
 textarea {
-  font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-family: ozBold, Arial, Helvetica, sans-serif;
 }
 
 /* line 48, ../../../node_modules/bulma/sass/base/generic.sass */
@@ -816,12 +816,12 @@ a.has-text-dark:hover, a.has-text-dark:focus {
 
 /* line 94, ../../../node_modules/bulma/sass/base/helpers.sass */
 .has-text-primary {
-  color: #00d1b2 !important;
+  color: #23d160 !important;
 }
 
 /* line 97, ../../../node_modules/bulma/sass/base/helpers.sass */
 a.has-text-primary:hover, a.has-text-primary:focus {
-  color: #009e86 !important;
+  color: #1ca64c !important;
 }
 
 /* line 94, ../../../node_modules/bulma/sass/base/helpers.sass */
@@ -3227,7 +3227,7 @@ a.has-text-danger:hover, a.has-text-danger:focus {
 }
 /* line 17, ../../../node_modules/bulma/sass/layout/hero.sass */
 .hero.is-primary {
-  background-color: #00d1b2;
+  background-color: #23d160;
   color: #fff;
 }
 /* line 20, ../../../node_modules/bulma/sass/layout/hero.sass */
@@ -3251,7 +3251,7 @@ a.has-text-danger:hover, a.has-text-danger:focus {
 @media screen and (max-width: 1023px) {
   /* line 30, ../../../node_modules/bulma/sass/layout/hero.sass */
   .hero.is-primary .navbar-menu {
-    background-color: #00d1b2;
+    background-color: #23d160;
   }
 }
 /* line 33, ../../../node_modules/bulma/sass/layout/hero.sass */
@@ -3263,7 +3263,7 @@ a.has-text-danger:hover, a.has-text-danger:focus {
 .hero.is-primary a.navbar-item:hover, .hero.is-primary a.navbar-item.is-active,
 .hero.is-primary .navbar-link:hover,
 .hero.is-primary .navbar-link.is-active {
-  background-color: #00b89c;
+  background-color: #20bc56;
   color: #fff;
 }
 /* line 43, ../../../node_modules/bulma/sass/layout/hero.sass */
@@ -3291,16 +3291,16 @@ a.has-text-danger:hover, a.has-text-danger:focus {
 .hero.is-primary .tabs.is-boxed li.is-active a, .hero.is-primary .tabs.is-boxed li.is-active a:hover, .hero.is-primary .tabs.is-toggle li.is-active a, .hero.is-primary .tabs.is-toggle li.is-active a:hover {
   background-color: #fff;
   border-color: #fff;
-  color: #00d1b2;
+  color: #23d160;
 }
 /* line 64, ../../../node_modules/bulma/sass/layout/hero.sass */
 .hero.is-primary.is-bold {
-  background-image: linear-gradient(141deg, #009e6c 0%, #00d1b2 71%, #00e7eb 100%);
+  background-image: linear-gradient(141deg, #12af2f 0%, #23d160 71%, #2ce28a 100%);
 }
 @media screen and (max-width: 768px) {
   /* line 69, ../../../node_modules/bulma/sass/layout/hero.sass */
   .hero.is-primary.is-bold .navbar-menu {
-    background-image: linear-gradient(141deg, #009e6c 0%, #00d1b2 71%, #00e7eb 100%);
+    background-image: linear-gradient(141deg, #12af2f 0%, #23d160 71%, #2ce28a 100%);
   }
 }
 /* line 17, ../../../node_modules/bulma/sass/layout/hero.sass */
@@ -4139,7 +4139,7 @@ a.has-text-danger:hover, a.has-text-danger:focus {
 }
 /* line 96, ../../../node_modules/bulma/sass/components/tabs.sass */
 .tabs.is-boxed a:hover {
-  background-color: whitesmoke;
+  background-color: #EAEAEA;
   border-bottom-color: #dbdbdb;
 }
 /* line 101, ../../../node_modules/bulma/sass/components/tabs.sass */
@@ -4163,7 +4163,7 @@ a.has-text-danger:hover, a.has-text-danger:focus {
 }
 /* line 116, ../../../node_modules/bulma/sass/components/tabs.sass */
 .tabs.is-toggle a:hover {
-  background-color: whitesmoke;
+  background-color: #EAEAEA;
   border-color: #b5b5b5;
   z-index: 2;
 }
