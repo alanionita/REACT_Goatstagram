@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const PhotoCardMini = props => {
-  const { title, link, onClick, views, isFave } = props;
+  const { title, link, onClick, views, path } = props;
   return (
     <section className="column is-four-fifths-mobile is-two-fifths-tablet is-one-third-desktop">
       <div className="card">
@@ -20,7 +20,7 @@ const PhotoCardMini = props => {
               role="img"
               aria-label="heart emoji"
             >
-              {isFave === true ? '❤️' : '🖤'}
+              {path === '/favourites' ? '❤️' : '🖤'}
             </span>
           </div>
         </div>
@@ -39,7 +39,7 @@ PhotoCardMini.propTypes = {
   link: PropTypes.string.isRequired,
   views: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
-  isFave: PropTypes.bool
+  path: PropTypes.string.isRequired
 };
 
 export default PhotoCardMini;

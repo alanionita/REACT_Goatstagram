@@ -6,9 +6,8 @@ import { Route, Switch } from 'react-router-dom';
 import Header from './Header';
 import Nav from './Nav';
 import PhotoList from './PhotoList';
-import FaveList from './FaveList';
 
-const App = ({ photosData, addToFave }) => (
+const App = ({ photosData, addToFave, removeFromFave }) => (
   <main className="App">
     <Header />
     <Nav />
@@ -16,12 +15,20 @@ const App = ({ photosData, addToFave }) => (
       <Route
         path="/"
         exact={true}
-        render={() => <PhotoList photos={photosData} addToFave={addToFave} />}
+        render={() => (
+          <PhotoList photos={photosData.data} faveFunc={addToFave} path={'/'} />
+        )}
       />
       <Route
         path="/favourites"
         exact={true}
-        render={() => <FaveList photos={photosData} addToFave={addToFave} />}
+        render={() => (
+          <PhotoList
+            photos={photosData.favourites}
+            faveFunc={removeFromFave}
+            path={'/favourites'}
+          />
+        )}
       />
     </Switch>
   </main>
@@ -29,7 +36,8 @@ const App = ({ photosData, addToFave }) => (
 
 App.propTypes = {
   photosData: PropTypes.object.isRequired,
-  addToFave: PropTypes.func.isRequired
+  addToFave: PropTypes.func.isRequired,
+  removeFromFave: PropTypes.func.isRequired
 };
 
 export default App;

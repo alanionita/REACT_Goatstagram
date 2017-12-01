@@ -11,11 +11,17 @@ class PhotoList extends React.Component {
   }
 
   render () {
-    return (
+    return this.props.photos.length === 0 ? (
+      this.props.path === '/favourites' ? (
+        <h2>No favourites here!</h2>
+      ) : (
+        <h2>No photos available</h2>
+      )
+    ) : (
       <section className="PhotoList">
         <div className="container">
           <div className="columns is-multiline is-mobile is-centered">
-            {this.props.photos.data.map(
+            {this.props.photos.map(
               photo =>
                 !photo.url_m ? null : (
                   <PhotoCardMini
@@ -23,7 +29,8 @@ class PhotoList extends React.Component {
                     link={photo.url_m}
                     views={photo.views}
                     key={`${v4()}${photo.id}`}
-                    onClick={() => this.props.addToFave(photo)}
+                    onClick={() => this.props.faveFunc(photo)}
+                    path={this.props.path}
                   />
                 )
             )}
@@ -35,8 +42,9 @@ class PhotoList extends React.Component {
 }
 
 PhotoList.propTypes = {
-  photos: PropTypes.object.isRequired,
-  addToFave: PropTypes.func.isRequired
+  photos: PropTypes.array.isRequired,
+  path: PropTypes.string.isRequired,
+  faveFunc: PropTypes.func.isRequired
 };
 
 export default PhotoList;
