@@ -7,15 +7,37 @@ describe('PHOTOS REDUCER', () => {
     expect(typeof reducer).toBe('function');
   });
   describe('fetchPhotos', () => {
+    const action = actions.fetchPhotosSuccess({
+      photos: {
+        photo: [
+          {
+            id: '1',
+            title: 'Stretching for food',
+            url_m: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+          },
+          {
+            id: '2',
+            title: 'Yoga',
+            url_m: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+          }
+        ]
+      }
+    });
     test('adds a collection of photos to the new state', () => {
-      const action = actions.fetchPhotosSuccess({
-        photos: {
-          photo: [{ '2': 2 }, { '1': 1 }]
-        }
-      });
       const newState = reducer(initialState, action);
       expect(Array.isArray(newState.data)).toBe(true);
-      expect(newState.data).toEqual([{ '2': 2 }, { '1': 1 }]);
+      expect(newState.data).toEqual([
+        {
+          id: '1',
+          title: 'Stretching for food',
+          url_m: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+        },
+        {
+          id: '2',
+          title: 'Yoga',
+          url_m: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+        }
+      ]);
     });
     test('changes the loading property in the new state', () => {
       const action = actions.fetchPhotosRequest();
@@ -35,12 +57,12 @@ describe('PHOTOS REDUCER', () => {
           {
             id: '1',
             title: 'Stretching for food',
-            link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+            url_m: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
           },
           {
             id: '2',
             title: 'Yoga',
-            link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+            url_m: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
           }
         ]
       }
@@ -49,7 +71,7 @@ describe('PHOTOS REDUCER', () => {
     const input = {
       id: '1',
       title: 'Stretching for food',
-      link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+      url_m: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
     };
     test('removes photo from state', () => {
       expect(prevState.data.length).toBe(2);
@@ -59,7 +81,7 @@ describe('PHOTOS REDUCER', () => {
         {
           id: '2',
           title: 'Yoga',
-          link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+          url_m: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
         }
       ]);
       expect(newState.data.length).toBe(1);
@@ -71,7 +93,7 @@ describe('PHOTOS REDUCER', () => {
         {
           id: '2',
           title: 'Yoga',
-          link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+          url_m: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
         }
       ]);
       expect(newState.data.length).toBe(1);
@@ -80,7 +102,7 @@ describe('PHOTOS REDUCER', () => {
         {
           id: '1',
           title: 'Stretching for food',
-          link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+          url_m: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
         }
       ]);
     });
@@ -92,12 +114,12 @@ describe('PHOTOS REDUCER', () => {
           {
             id: '1',
             title: 'Stretching for food',
-            link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+            url_m: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
           },
           {
             id: '2',
             title: 'Yoga',
-            link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+            url_m: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
           }
         ]
       }
@@ -106,7 +128,7 @@ describe('PHOTOS REDUCER', () => {
     const input = {
       id: '1',
       title: 'Stretching for food',
-      link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+      url_m: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
     };
     const action = actions.addToFavourites(input);
     const newState = reducer(prevState, action);
@@ -114,7 +136,7 @@ describe('PHOTOS REDUCER', () => {
       {
         id: '2',
         title: 'Yoga',
-        link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+        url_m: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
       }
     ]);
     expect(newState.data.length).toBe(1);
@@ -123,14 +145,14 @@ describe('PHOTOS REDUCER', () => {
       {
         id: '1',
         title: 'Stretching for food',
-        link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+        url_m: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
       }
     ]);
     test('removes photo from favourites', () => {
       const input = {
         id: '1',
         title: 'Stretching for food',
-        link: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
+        url_m: 'https://www.flickr.com/photos/vassilisonline/38593667296/'
       };
       const action = actions.removeFromFavourites(input);
       const newState = reducer(prevState, action);
