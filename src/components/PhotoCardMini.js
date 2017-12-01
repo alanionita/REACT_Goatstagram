@@ -9,7 +9,7 @@ const PhotoCardMini = props => {
         <div className="level is-mobile" style={{ marginBottom: 0 }}>
           <div className="level-left">
             <h1 className="card-header-title level-item">
-              {title.substring(0, 15)}
+              {title.substring(0, 15).toLowerCase()}
             </h1>
           </div>
           <h3 className="level-item">{views} views</h3>
@@ -20,7 +20,11 @@ const PhotoCardMini = props => {
               role="img"
               aria-label="heart emoji"
             >
-              {path === '/favourites' ? '❤️' : '🖤'}
+              {path === '/favourites' ? (
+                <i className="fa fa-heart" aria-hidden="true" />
+              ) : (
+                <i className="fa fa-heart-o" aria-hidden="true" />
+              )}
             </span>
           </div>
         </div>
