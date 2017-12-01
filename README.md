@@ -463,6 +463,7 @@ fetchPhotos() photos.reducer.js
 * [Font Awesome](http://fontawesome.io) - Font and CSS toolkit
 * [Node UUID](https://www.npmjs.com/package/uuid) - Simple, fast generation of
   RFC4122 UUIDS.
+  * [Underscore](http://underscorejs.org/) javascript helper library
 
 ### Dev Dependencies
 
