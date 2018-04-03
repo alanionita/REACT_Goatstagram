@@ -1,13 +1,23 @@
-# AO.com Tech Challenge
+# Goatstagram
 
-My own interpretation of the AO.com challenge: create an image-based SPA that
-allows you to like / unlike photos from Flickr.
+My own interpretation of Instagram using cute goat photos, React, Redux, and Flikr. 
 
 ![screenshot of the app](./app-screenshot.png)
 
+## Objectives 
+* use the Flikr API and tweak it so it consistently returns relevant/safe results 
+* create an interface as close as possible to Instragram 
+* use SASS to break up components from a CSS framework to limit the bloat
+* build a grid-based layout with multiple breakpoints and smooth transitions
+* implement data-driven design through Redux
+* implement a favourites feature via Web Storage API
+* learn and implement a React Router v4 pattern
+* practice good code quality through linting and the use of a code formatter (Prettier) 
+* carefully build the project with accesibility in mind
+
 ## Quick start link
 
-[Hosted on Heroku](http://ao-tech-challenge.herokuapp.com/)
+[Hosted on Heroku](https://goatstagram.herokuapp.com/)
 
 ## Thoughts & designs
 
