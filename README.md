@@ -1,4 +1,4 @@
-# Goatstagram
+# Goatstagram 🐐
 
 My own interpretation of Instagram using cute goat photos, React, Redux, and Flikr. 
 
@@ -8,7 +8,7 @@ My own interpretation of Instagram using cute goat photos, React, Redux, and Fli
 * use the Flikr API and tweak it so it consistently returns relevant/safe results 
 * create an interface as close as possible to Instragram 
 * use SASS to break up components from a CSS framework to limit the bloat
-* build a grid-based layout with multiple breakpoints and smooth transitions
+* build a grid-based layout with multiple breakpoints, smooth transitions, and full browser testing
 * implement data-driven design through Redux
 * implement a favourites feature via Web Storage API
 * learn and implement a React Router v4 pattern
@@ -19,15 +19,10 @@ My own interpretation of Instagram using cute goat photos, React, Redux, and Fli
 
 [Hosted on Heroku](https://goatstagram.herokuapp.com/)
 
-## Thoughts & designs
+## Design
 
-I chose the Instagram style layout because it matched the styles of the deals
-page at the time (Black Friday).
-
-![black friday deals](./black-friday-deals.png)
-
-Like the deals page, the SPA layout starts out as a grid of 3 cards per row,
-shrinking to two on tablets and one on mobile.
+The SPA layout starts out as a grid of 3 cards per row,
+shrinking to two on tablets and one on mobile, with varying sizes depending on the device.
 
 ### Drawing out the components
 
